@@ -1,0 +1,55 @@
+/* Contenedor principal de la imagen y el texto del home */
+.home {
+    position: relative;                  /* Para colocar elementos encima */
+    height: 80vh;                        /* 80% de la altura de la pantalla */
+    background-image: url('/img/kevin-ku-w7ZyuGYNpRQ-unsplash.jpg'); /* Imagen */
+    background-size: contain;            /* Ajusta la imagen al contenedor */
+    background-repeat: no-repeat;        /* No repite la imagen */
+    background-position: center;         /* Centra la imagen */
+    overflow: hidden;                    /* Oculta lo que se desborde */
+    display: flex;                       /* Centra el contenido verticalmente */
+    align-items: center;                 /* Centra verticalmente */
+    justify-content: center;             /* Centra horizontalmente */
+    transition: transform 0.9s ease;     /* Suaviza el zoom al hacer hover */
+}
+
+/* Filtro oscuro encima de la imagen para mejorar el contraste del texto */
+.home::after {
+    content: "";                         /* Necesario para usar ::after */
+    position: absolute;                  /* Lo coloca sobre la imagen */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(3px);          /* Le da un desenfoque sutil */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo negro semitransparente */
+}
+
+/* Contenedor del texto encima de la imagen */
+.home-content {
+    position: relative;                  /* Lo mantiene encima del ::after */
+    text-align: center;                  /* Centra el texto */
+    color: white;                        /* Letras blancas */
+    z-index: 1;                          /* Lo asegura sobre el filtro oscuro */
+    padding: 0 20px;                     /* Espacio a los costados */
+}
+
+/* Título principal */
+.home-content h1 {
+    font-size: 3rem;                     /* Tamaño grande para el título */
+    margin-bottom: 0.5em;                /* Espacio debajo del título */
+}
+
+/* Texto descriptivo */
+.home-content p {
+    font-size: 1.3rem;                   /* Letra más grande que el body */
+    max-width: 700px;                    /* Limita el ancho para que no se desborde */
+    margin: 0 auto;                      /* Centra el párrafo */
+}
+
+/* ---------- ANIMACIÓN SUAVE ---------- */
+
+/* Efecto de zoom al pasar el mouse por la sección hero */
+.home:hover {
+    transform: scale(1.05);              /* Aumenta un 5% el tamaño */
+}
