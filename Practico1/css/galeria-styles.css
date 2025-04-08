@@ -1,0 +1,19 @@
+.galeria{
+    color: white;
+    background-color: rgba(255, 0, 0, 0.185);
+}
+
+.galeria .galeria-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.galeria-content h1{
+    font-size: 2em;
+    padding-bottom: 25px;
+}
+
+.galeria:hover {
+    transform: scale(1.05);              /* Aumenta un 5% el tamaño */
+}
