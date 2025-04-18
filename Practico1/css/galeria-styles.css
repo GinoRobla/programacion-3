@@ -38,11 +38,3 @@ img:hover{
     box-shadow: 0 0 20px rgba(0, 216, 255, 0.4);
     border-color: blueviolet;
 }
-
-footer{
-    text-align: center;
-}
-footer p{
-    padding: 1em;
-    color: white;
-}

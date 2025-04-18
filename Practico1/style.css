@@ -47,3 +47,11 @@ nav ul li a {
 nav ul li a:hover {
     color: #00d8ff;                      /* Azul celeste al pasar el mouse */
 }
+
+footer{
+    text-align: center;
+}
+footer p{
+    padding: 1em;
+    color: white;
+}
