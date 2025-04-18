@@ -1,30 +1,40 @@
 main{ /* Configura todo el main */
     box-sizing: border-box; /* Mantiene todo el contenido dentro de la altura y ancho definido para el main */
-    background-color: rgba(20, 159, 201, 0.76); /* Cambia el color del fondo del main */
+    background-color:  #111111; /* Cambia el color del fondo del main */
     text-align: center; /* Acomoda todos los textos en medio de la página en la zona del main */
     padding: 3%; /* Agrega un poco de padding depediendo el tamaño de la página */
-    width: 80vw; /* Le da un 80% del ancho de la pantalla del dispositivo */
-    margin: auto; /* Le da al margen una propiedad para que se auto acomode a la altura y ancho de lo pedido anteriormente*/
-    border-radius: 10px; /* Redondea un poco las puntas del borde del main */
+     /* Redondea un poco las puntas del borde del main */
 }
 
 h1{ /* Configura todos los h1 de la galeria */
     font-size: 2.5em; /* Le da un tamaño específico a la fuente del texto */
-    color: white; /* Cambia el color normal */
+    color: #00d8ff; /* Cambia el color normal */
     margin-bottom: 30px; /* Coloca un margen en la base del h1 */
 }
 
 div{
     margin: 5%;
     text-align: left;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 90vw;
+    margin: auto;
 }
 
 img{ /* Configura todos los img de la galeria */
-    background-color: rgba(137, 43, 226, 0.438); /* Le da color al fondo de la imagen para que se vea más estético con el padding */
     margin-bottom: 5%; /* Le agrega un margen que se auto-acomoda por el tamaño de la pantalla */
-    border: 5px solid rgba(255, 255, 255, 0.233);
-    width: auto;
-    max-height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.233);
+    width: 250px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+img:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 216, 255, 0.4);
+    border-color: blueviolet;
 }
 
 footer{
