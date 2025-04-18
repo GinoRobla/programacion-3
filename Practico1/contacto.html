@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Solutions - inicio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/home-styles.css">
+    <link rel="stylesheet" href="css/contactos-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Comuníquese con nosotros</h2>
+        <section id="contacto" class="contact-section">
+            <form class="contact-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono">
+
+                <label for="comentarios">Comentarios:</label>
+                <textarea id="comentarios" name="comentarios" rows="4" style="resize: vertical;"></textarea>
+
+                <label for="motivo">Motivo de contacto:</label>
+                <select id="motivo" name="motivo">
+                    <option value="consulta">Consulta</option>
+                    <option value="presupuesto">Presupuesto</option>
+                    <option value="otro">Otro</option>
+                </select>
+
+                <div class="checkbox-group">
+                    <label><input type="radio" name="preferencia" value="email"> Prefiero contacto por Email</label>
+                    <label><input type="radio" name="preferencia" value="telefono"> Prefiero contacto por Teléfono</label>
+                </div>
+
+                <div class="button-group">
+                    <button type="reset" style="background-color: black;border:1px white solid">Borrar</button>
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p style="padding:1em;">© 2025 TechNova Solutions</p>
+    </footer>
+</body>
+</html>
