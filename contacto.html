@@ -1,0 +1,46 @@
+<head>
+  <link rel="stylesheet" href="contacto.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<h2 style="margin:auto;">Contacto</h2>
+  <form>
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="123-456-7890">
+    </div>
+
+    <div class="form-group">
+      <label for="comentarios">Comentarios:</label>
+      <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="motivo">Motivo de contacto:</label>
+      <select id="motivo" name="motivo">
+        <option value="consulta">Consulta</option>
+        <option value="propuesta">Propuesta de proyecto</option>
+        <option value="otros">Otros</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <p>¿Deseás recibir novedades?</p>
+      <label><input type="radio" name="novedades" value="si"> Sí</label>
+      <label><input type="radio" name="novedades" value="no"> No</label>
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit">Enviar</button>
+      <button type="reset">Limpiar</button>
+    </div>
+  </form>
