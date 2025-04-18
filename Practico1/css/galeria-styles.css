@@ -1,32 +1,28 @@
-.galeria{
-    color: white;
-    background-color: rgb(255, 0, 0);
-    margin: 10px 200px;
+main{ /* Configura todo el main */
+    box-sizing: border-box; /* Mantiene todo el contenido dentro de la altura y ancho definido para el main */
+    background-color: red; /* Cambia el color del fondo del main */
+    text-align: center; /* Acomoda todos los textos en medio de la página en la zona del main */
+    padding: 3%; /* Agrega un poco de padding depediendo el tamaño de la página */
+    height: 80vh; /* Le da un 80% de la altura de la pantalla del dispositivo */
+    width: 80vw; /* Le da un 80% del ancho de la pantalla del dispositivo */
+    margin: auto; /* Le da al margen una propiedad para que se auto acomode a la altura y ancho de lo pedido anteriormente*/
+    border: 5px solid white; /* Le da un borde a la zona main */
+    border-radius: 10px; /* Redondea un poco las puntas del borde del main */
 }
 
-.galeria-content{
-    display: flex;          
-    flex-direction: column;
-    align-items: center;
+h1{ /* Configura todos los h1 de la galeria */
+    font-size: 2.5em; /* Le da un tamaño específico a la fuente del texto */
+    color: white; /* Cambia el color normal */
+    margin-bottom: 30px; /* Coloca un margen en la base del h1 */
 }
 
-.galeria-content h1{
-    font-size: 2em;
-    padding: 25px 0;
+div{
+    margin: 5%;
+    text-align: left;
 }
 
-.galeria-content h1:hover {
-    color: blueviolet;
-    transform: scale(1.05);              /* Aumenta un 5% el tamaño */
-}
-
-.img{
-    color: white;
-    background-color: rgba(255, 0, 0, 0.5);
-    margin: 0 200px;
-    display: flex;
-}
-
-.img-content{
-
+img{ /* Configura todos los img de la galeria */
+    padding: 1%; /* Le da un poco de padding a la imagen */
+    background-color: rgba(137, 43, 226, 0.438); /* Le da color al fondo de la imagen para que se vea más estético con el padding */
+    margin-bottom: 5%; /* Le agrega un margen que se auto-acomoda por el tamaño de la pantalla */
 }
