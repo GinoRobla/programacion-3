@@ -24,4 +24,5 @@ img{ /* Configura todos los img de la galeria */
     padding: 1%; /* Le da un poco de padding a la imagen */
     background-color: rgba(137, 43, 226, 0.438); /* Le da color al fondo de la imagen para que se vea más estético con el padding */
     margin-bottom: 5%; /* Le agrega un margen que se auto-acomoda por el tamaño de la pantalla */
+    
 }
