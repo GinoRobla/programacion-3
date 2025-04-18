@@ -3,7 +3,6 @@ main{ /* Configura todo el main */
     background-color: red; /* Cambia el color del fondo del main */
     text-align: center; /* Acomoda todos los textos en medio de la página en la zona del main */
     padding: 3%; /* Agrega un poco de padding depediendo el tamaño de la página */
-    height: 80vh; /* Le da un 80% de la altura de la pantalla del dispositivo */
     width: 80vw; /* Le da un 80% del ancho de la pantalla del dispositivo */
     margin: auto; /* Le da al margen una propiedad para que se auto acomode a la altura y ancho de lo pedido anteriormente*/
     border: 5px solid white; /* Le da un borde a la zona main */
