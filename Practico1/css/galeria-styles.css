@@ -20,6 +20,7 @@ div{
     flex-wrap: wrap;
     max-width: 90vw;
     margin: auto;
+    
 }
 
 img{ /* Configura todos los img de la galeria */
@@ -29,6 +30,7 @@ img{ /* Configura todos los img de la galeria */
     height: 240px;
     object-fit: cover;
     border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 img:hover{
