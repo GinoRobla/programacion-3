@@ -11,8 +11,11 @@ y hace que el ancho y alto incluyan el borde y padding */
 /* Establece la fuente principal, el color de fondo de toda la página
 y el color del texto */
 body {
+    display: flex;                        /* Flexbox para estructurar la página */
+    flex-direction: column;               /* Coloca los elementos en columna */
+    min-height: 100vh;                    /* Altura mínima de la ventana */
     font-family: Arial, sans-serif;       /* Fuente */
-    background-color: #000000;            /* negro */
+    background-color: #000000;
 }
 /* ---------- HEADER Y NAV ---------- */
 
@@ -50,8 +53,23 @@ nav ul li a:hover {
 
 footer{
     text-align: center;
+    padding: 20px 0;                      /* Espaciado arriba y abajo */
+    background-color: #000000; 
+
 }
-footer p{
-    padding: 1em;
-    color: white;
+footer ul{
+    display: flex;                        /* Hace que los <li> estén en fila */
+    justify-content: center;             /* Centra los <li> horizontalmente */
+    list-style: none;                    /* Quita los puntitos de la lista */
+    margin: 0;
+}
+
+footer ul li {
+    margin: 0 15px;                       /* Separación a los costados */
+    display: flex;                        /* Flexbox para alinear contenido */
+    align-items: center;                /* Centra verticalmente */
+}
+footer ul li a {
+    text-decoration: none;               /* Quita el subrayado */
+    color: white;                        /* Texto blanco */
 }

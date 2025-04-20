@@ -23,7 +23,7 @@ div{
     
 }
 
-img{ /* Configura todos los img de la galeria */
+.img-galeria{ /* Configura todos los img de la galeria */
     margin-bottom: 5%; /* Le agrega un margen que se auto-acomoda por el tamaño de la pantalla */
     border: 2px solid rgba(255, 255, 255, 0.233);
     width: 250px;
@@ -33,7 +33,7 @@ img{ /* Configura todos los img de la galeria */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-img:hover{
+.img-galeria:hover{
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0, 216, 255, 0.4);
     border-color: blueviolet;
