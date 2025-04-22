@@ -1,0 +1,18 @@
+.resaltado {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.oculto {
+    display: none;
+}
+
+.completado {
+    text-decoration: line-through;
+    color: rgb(185, 39, 243);
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+}

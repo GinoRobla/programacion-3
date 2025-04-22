@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practico 2</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <h1 id="tituloPrincipal">Titulo Principal</h1>
+    </header>
+    <main>
+        <div class="parrafos">
+            <p id="parrafo1">Este es un parrafo de ejemplo</p>
+            <p id="parrafo2">Este es otro parrafo de ejemplo</p>
+        </div>
+        <section>
+            <h2>Lista dinámica</h2>
+            <input type="text" id="inputElemento" placeholder="Escribí algo...">
+            <button id="btnAgregar">Agregar</button>
+            <ul id="listaDinamica"></ul>
+        </section>
+
+        <section>
+            <p class="parrafo">Párrafo 1</p>
+            <p class="parrafo">Párrafo 2</p>
+            <p class="parrafo">Párrafo 3</p>
+        
+            <button id="btnResaltar">Resaltar párrafos</button>
+            <button id="btnOcultar">Ocultar/Mostrar párrafos</button>
+        </section>
+
+        <section>
+            <h2>Lista de tareas</h2>
+            <form id="formularioTareas">
+            <input type="text" id="tareaInput" placeholder="Nueva tarea">
+            <button type="submit">Agregar tarea</button>
+            </form>
+            <ul id="listaTareasInteractivas"></ul>
+        </section>
+        
+        <section>
+            <h2>Formulario de Validación</h2>
+            <form id="formularioValidacion">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre">
+                <small class="error" id="errorNombre"></small>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+                <small class="error" id="errorEmail"></small>
+            </div>
+            <div>
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad">
+                <small class="error" id="errorEdad"></small>
+            </div>
+            <button type="submit">Enviar</button>
+            </form>
+        </section>
+        
+    </main>
+    <footer>
+        <div id="contenedor">
+            <ul>
+                <li><a href="https://www.google.com">Google</a></li>
+                <li><a href="https://www.facebook.com">Facebook</a></li>
+                <li><a href="https://www.twitter.com">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+<script src="script.js"></script>
+</html>
