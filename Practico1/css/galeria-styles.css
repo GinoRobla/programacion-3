@@ -1,30 +1,29 @@
-main{ /* Configura todo el main */
-    box-sizing: border-box; /* Mantiene todo el contenido dentro de la altura y ancho definido para el main */
-    background-color:  #111111; /* Cambia el color del fondo del main */
-    text-align: center; /* Acomoda todos los textos en medio de la página en la zona del main */
-    padding: 3%; /* Agrega un poco de padding depediendo el tamaño de la página */
-     /* Redondea un poco las puntas del borde del main */
+main { 
+    box-sizing: border-box;
+    background-color: #111111;
+    text-align: center;
+    padding: 3%;
+    /* Redondea un poco las puntas del borde del main */
 }
 
-h1{ /* Configura todos los h1 de la galeria */
-    font-size: 2.5em; /* Le da un tamaño específico a la fuente del texto */
-    color: #00d8ff; /* Cambia el color normal */
-    margin-bottom: 30px; /* Coloca un margen en la base del h1 */
+h1 {
+    font-size: 2.5em;
+    color: #00d8ff;
+    margin-bottom: 30px;
 }
 
-div{
+div {
     margin: 5%;
     text-align: left;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 5%;
     max-width: 90vw;
     margin: auto;
-    
 }
 
-.img-galeria{ /* Configura todos los img de la galeria */
-    margin-bottom: 5%; /* Le agrega un margen que se auto-acomoda por el tamaño de la pantalla */
+.img-galeria {
+    margin-bottom: 5%;
     border: 2px solid rgba(255, 255, 255, 0.233);
     width: 250px;
     height: 240px;
@@ -33,7 +32,7 @@ div{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.img-galeria:hover{
+.img-galeria:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0, 216, 255, 0.4);
     border-color: blueviolet;
