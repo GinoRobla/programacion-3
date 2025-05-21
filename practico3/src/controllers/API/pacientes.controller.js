@@ -1,5 +1,6 @@
 const pacientesModel = require("./../../models/mock/pacientes.models.js");
 const Paciente = require("./../../models/mock/entities/paciente.entity.js");
+const pacienteSchema = require("../../validations/pacientes.validation.js");
 
 class PacientesController {
   async login(req, res) {
@@ -21,9 +22,13 @@ class PacientesController {
   }
 
   async create(req, res) {
-    const { dni, nombre, apellido, email } = req.body;
+    const { error } = pacienteSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: "Error! algun dato no cumplio con los requisitos" });
+    }
 
-    const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
+    const { dni, nombre, apellido, email, password } = req.body;
+    const nuevoPaciente = new Paciente(dni, nombre, apellido, email, password);
 
     const info = await pacientesModel.create(nuevoPaciente);
     res.status(200).json(info);
@@ -41,10 +46,15 @@ class PacientesController {
 
   update(req, res) {
     const id = req.params.id;
+    
+    const { error } = pacienteSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: "Error! algun dato no cumplio con los requisitos" });
+    }
 
-    const { dni, nombre, apellido, email } = req.body;
+    const { dni, nombre, apellido, email, password} = req.body;
 
-    const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
+    const nuevoPaciente = new Paciente(dni, nombre, apellido, email, password);
 
     pacientesModel.update(id, nuevoPaciente);
 

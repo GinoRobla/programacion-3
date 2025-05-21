@@ -1,5 +1,6 @@
 const turnosModel = require("../../models/mock/turnos.models.js");
 const Turno = require("../../models/mock/entities/turno.entity.js");
+const turnoSchema = require("../../validations/turnos.validation.js");
 
 const listarPorPaciente = async (req, res) => {
 try {
@@ -28,16 +29,15 @@ try {
 
 const crear = async (req, res) => {
 try {
-    const { fecha, hora, pacienteId } = req.body;
-
-    // Validar campos
-    if (!fecha || !hora || !pacienteId) {
+    const { error } = turnoSchema.validate(req.body);
+    if (error) {
         return res.status(400).json({
             status: "error",
-            mensaje: "Faltan datos obligatorios"
+            mensaje: "Error! algún dato no cumplió con los requisitos"
         });
     }
 
+    const { fecha, hora, pacienteId } = req.body;
     const nuevoTurno = new Turno(0, fecha, hora, Number(pacienteId));
     const turnoCreado = await turnosModel.create(nuevoTurno);
 
@@ -57,17 +57,16 @@ try {
 
 const actualizar = async (req, res) => {
 try {
-    const idTurno = req.params.idTurno;
-    const { fecha, hora, pacienteId } = req.body;
-
-    // Validar campos
-    if (!fecha || !hora || !pacienteId) {
+    const { error } = turnoSchema.validate(req.body);
+    if (error) {
         return res.status(400).json({
             status: "error",
-            mensaje: "Faltan datos obligatorios"
+            mensaje: "Error! algún dato no cumplió con los requisitos"
         });
     }
 
+    const idTurno = req.params.idTurno;
+    const { fecha, hora, pacienteId } = req.body;
     const turnoActualizado = await turnosModel.update(idTurno, { fecha, hora, pacienteId });
 
     if (!turnoActualizado) {

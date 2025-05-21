@@ -133,9 +133,7 @@ class PacientesModel {
         }catch(error){
           reject(error)
         }
-      
-    })
+      })
+    }
   }
-}
-
 module.exports = new PacientesModel();
