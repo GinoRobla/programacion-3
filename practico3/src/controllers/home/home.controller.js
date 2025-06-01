@@ -1,4 +1,3 @@
-
 // controladores
 const home = async (req, res) => {
     res.render('index', { 
@@ -16,6 +15,3 @@ const home = async (req, res) => {
 module.exports = {
     home
 }
-
-
-

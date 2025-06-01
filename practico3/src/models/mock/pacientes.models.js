@@ -23,7 +23,7 @@ class PacientesModel {
         const paciente = this.data.find(
           (p) => p.email === email && p.password === password
         );
-        if (paciente === null) {
+        if (!paciente) {
           throw new Error("el paciente no existe");
         }
         resolve(paciente);

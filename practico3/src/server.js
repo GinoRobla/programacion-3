@@ -15,28 +15,24 @@ class Server {
     //this.cors()
     this.engine(template)
     this.rutas()
- 
-    
-  }
+}
 
 /*   cors () {
     this.app.use(cors())
-  } */
+} */
 
   engine (template) {
-     try{
-       require.resolve(template);
-        
-       this.app.set('view engine', template)
-       this.app.set('views', './src/views/'+template)
-     }catch (error) {
-        console.log('Error al configurar el motor de plantillas:',template)
-        
-      }
-
+  try{
+    require.resolve(template);
+    
+    this.app.set('view engine', template)
+    this.app.set('views', './src/views/'+template)
+    }catch (error) {
+      console.log('Error al configurar el motor de plantillas:',template)
+    }
   }
   middleware () {
-    // this.app.use('/', express.static('public'))
+    this.app.use('/', express.static('public'))
     this.app.use(express.json())
     this.app.use(morgan('dev'))
   }
@@ -44,10 +40,8 @@ class Server {
   rutas () {
     this.app.use('/api/v1/pacientes', rutaPacientes)
     this.app.use('/api/v1/turnos', rutaTurnos)
-    this.app.use('/',home)
- 
+    this.app.use('/', home)
     // aca van las otras rutas
-
   }
 
   listen () {
