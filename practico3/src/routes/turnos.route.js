@@ -3,12 +3,12 @@ const turnosController = require('../controllers/API/turnos.controller.js');
 const {verifyTokenMiddleware}  = require('../middlewares/verifyToken.middleware.js');
 const rutaTurnos = Router();
 
-rutaTurnos.get('/:idPaciente', turnosController.listarPorPaciente);
+rutaTurnos.get('/:idPaciente', verifyTokenMiddleware, turnosController.listarPorPaciente);
 
 rutaTurnos.post('/', verifyTokenMiddleware, turnosController.crear);
 
-rutaTurnos.put('/:idTurno', turnosController.actualizar);
+rutaTurnos.put('/:idTurno', verifyTokenMiddleware, turnosController.actualizar);
 
-rutaTurnos.delete('/:idTurno', turnosController.borrar);
+rutaTurnos.delete('/:idTurno', verifyTokenMiddleware, turnosController.borrar);
 
 module.exports = rutaTurnos;
