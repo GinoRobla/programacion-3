@@ -26,7 +26,7 @@ class Server {
     require.resolve(template);
     
     this.app.set('view engine', template)
-    this.app.set('views', './src/views/')
+    this.app.set('views', './src/views/' + template)
     }catch (error) {
       console.log('Error al configurar el motor de plantillas:',template)
     }
