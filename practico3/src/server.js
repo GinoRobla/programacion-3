@@ -8,7 +8,7 @@ const morgan = require('morgan');
 dotenv.config()
 
 class Server {
-  constructor (template=process.env.TEMPLATE || 'ejs') {
+  constructor (template=process.env.TEMPLATE || 'pug') {
     this.app = express()
     this.port = process.env.PORT || 3001
     this.middleware()
@@ -31,6 +31,7 @@ class Server {
       console.log('Error al configurar el motor de plantillas:',template)
     }
   }
+
   middleware () {
     this.app.use('/', express.static('public'))
     this.app.use(express.json())
@@ -41,7 +42,6 @@ class Server {
     this.app.use('/api/v1/pacientes', rutaPacientes)
     this.app.use('/api/v1/turnos', rutaTurnos)
     this.app.use('/', home)
-    // aca van las otras rutas
   }
 
   listen () {

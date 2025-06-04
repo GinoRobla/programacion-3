@@ -1,125 +1,51 @@
 const turnosModel = require("../../models/mock/turnos.models.js");
 const Turno = require("../../models/mock/entities/turno.entity.js");
-const turnoSchema = require("../../validations/turnos.validation.js");
 
 const listarPorPaciente = async (req, res) => {
-try {
     const idPaciente = req.params.idPaciente;
     const turnos = await turnosModel.getByPacienteId(idPaciente);
 
-    if (!turnos || turnos.length === 0) {
-        return res.status(404).json({
-            status: "error",
-            mensaje: "No se encontraron turnos para este paciente"
-        });
-    }
-
     return res.status(200).json({
-        status: "success",
         turnos
     });
-}catch (error) {
-    return res.status(500).json({
-        status: "error",
-        mensaje: "Error al obtener turnos",
-        error: error.message
-        });
-    }
 };
 
 const crear = async (req, res) => {
-try {
-    const { error } = turnoSchema.validate(req.body);
-    if (error) {
-        return res.status(400).json({
-            status: "error",
-            mensaje: "Error! algún dato no cumplió con los requisitos"
-        });
-    }
-
     const { fecha, hora, pacienteId } = req.body;
-    const nuevoTurno = new Turno(0, fecha, hora, Number(pacienteId));
-    const turnoCreado = await turnosModel.create(nuevoTurno);
+    const nuevoTurno = new Turno(null, fecha, hora, pacienteId);
 
-    return res.status(200).json({
-        status: "success",
+    const info = await turnosModel.create(nuevoTurno);
+    return res.status(201).json({
         mensaje: "Turno creado correctamente",
-        turno: turnoCreado
+        turno: info
     });
-} catch (error) {
-    return res.status(500).json({
-        status: "error",
-        mensaje: "Error al crear el turno",
-        error: error.message
-        });
-    }
 };
 
 const actualizar = async (req, res) => {
-try {
-    const { error } = turnoSchema.validate(req.body);
-    if (error) {
-        return res.status(400).json({
-            status: "error",
-            mensaje: "Error! algún dato no cumplió con los requisitos"
-        });
-    }
-
     const idTurno = req.params.idTurno;
     const { fecha, hora, pacienteId } = req.body;
-    const turnoActualizado = await turnosModel.update(idTurno, { fecha, hora, pacienteId });
+    const turnoActualizado = new Turno(null, fecha, hora, pacienteId);
 
-    if (!turnoActualizado) {
-        return res.status(404).json({
-            status: "error",
-            mensaje: "Turno no encontrado"
-        });
-    }
+    const newInfo = await turnosModel.update(idTurno, turnoActualizado);
 
-    return res.status(200).json({
-        status: "success",
+    res.status(200).json({
         mensaje: "Turno actualizado correctamente",
-        turno: turnoActualizado
-        });
-    } catch (error) {
-    return res.status(500).json({
-        status: "error",
-        mensaje: "Error al actualizar el turno",
-        error: error.message
-        });
-    }
-}
-
-const borrar = async (req, res) => {
-try {
-    const idTurno = req.params.idTurno;
-    const turno = await turnosModel.delete(idTurno);
-
-    if (!turno) {
-            return res.status(404).json({
-            status: "error",
-            mensaje: "Turno no encontrado"
-        });
-    }
-
-    return res.status(200).json({
-        status: "success",
-        mensaje: "Turno cancelado correctamente",
-        turno
+        turno: newInfo
     });
-} catch (error) {
-    return res.status(500).json({
-        status: "error",
-        mensaje: "Error al cancelar el turno",
-        error: error.message
-        });
-    }
 };
 
+const borrar = async (req, res) => {
+    const idTurno = req.params.idTurno;
+    await turnosModel.delete(idTurno);
+
+    res.status(200).json({
+        mensaje: "Turno eliminado correctamente"
+    });
+};
 
 module.exports = {
     listarPorPaciente,
     crear,
-    borrar,
-    actualizar
+    actualizar,
+    borrar
 };

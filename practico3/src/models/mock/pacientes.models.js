@@ -64,16 +64,19 @@ class PacientesModel {
     //return persona;
     return new Promise((resolve, reject) => {
       try{
-        paciente.id = this.id;
-        this.id++;
+        if (!paciente) {
+          throw new Error("el paciente no puede ser nulo");
+        }
         const pacienteEncontrado = this.data.find(p=>p.email===paciente.email)
         if(!pacienteEncontrado){
           this.data.push(paciente);
         }else{
           throw new Error("el paciente ya existe")
         }
-            
 
+        paciente.id = this.id;
+        this.id++;
+        
         resolve(paciente);
       }catch(error){
         reject(error);
@@ -101,20 +104,20 @@ class PacientesModel {
   }
   // elimina el cliente con id = id
   delete(id) {
-    new Promise((resolve,reject)=>{
-      try {
+  return new Promise((resolve,reject)=>{
+    try {
       const pacienteEncontrado = this.data.find((p) => p.id == id);
-        if(!pacienteEncontrado){
-          throw new Error("el id no es válido");
-        }
+      if(!pacienteEncontrado){
+        throw new Error("el id no es válido");
+      }
       const pos = this.data.indexOf(pacienteEncontrado);
       this.data.splice(pos, 1);
-        resolve(pacienteEncontrado); // elimina el elemento de la posición pos del arreglo
-      } catch (error) {
+      resolve(pacienteEncontrado);
+    } catch (error) {
       reject(error);
     }
-    })
-  }
+  })
+}
   // devuelve la lista completa en un arreglo de strings
   list() {
     return new Promise((resolve, reject) => {
