@@ -1,61 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
-    background: #f5f6fa;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-}
-
-h2 {
-    color: #273c75;
-    margin-bottom: 24px;
-}
-
-form {
-    background: #fff;
-    padding: 32px 24px;
-    border-radius: 10px;
-    box-shadow: 0 2px 16px rgba(44, 62, 80, 0.08);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    min-width: 300px;
-}
-
-input[type="email"],
-input[type="password"] {
-    padding: 10px;
-    border: 1px solid #dcdde1;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    transition: border 0.2s;
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border: 1.5px solid #4078c0;
-}
-
-button {
-    background: #4078c0;
+    background-image: url(https://www.clinicapremium.com/wp-content/uploads/2022/04/fachada-clinica-premium-jacinto-benavente.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #fff;
+}
+
+.container {
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-back {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.message {
+    padding: 1rem;
+}
+
+.message h2 {
+    font-size: 1.7rem;
+    padding: 1rem 0;
+}
+
+.message button {
+    padding: 1rem;
+    font-weight: 400;
+    background-color: #4a4aee;
+    border-radius: 2rem;
     border: none;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 16px;
+    outline: none;
     cursor: pointer;
-    transition: background 0.2s;
+    font-size: .9rem;
+    margin-top: 2rem;
+    transition: all .3s ease-in;
+    color: #fff;
 }
 
-button:hover {
-    background: #273c75;
+.message button:hover {
+    background-color: #6464f8;
 }
 
-p {
-    margin-top: 12px;
-    font-size: 15px;
+.formulario {
+    width: 400px;
+    padding: 1rem;
+    margin: 2rem;
+    background-color: rgba(51, 51, 51, 0.8);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.iconos {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.border-icon {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: solid thin white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: all .3s ease-in;
+}
+
+.border-icon:hover {
+    background-color: #032072;
+    cursor: pointer;
+}
+
+.cuenta-gratis {
+    padding: 2rem 0;
+}
+
+.formulario input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: white;
+}
+
+.formulario button[type="submit"] {
+    width: 60%;
+    margin: auto;
+    border: solid thin white;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: .9rem;
+    cursor: pointer;
+    color: #222;
+    transition: background 0.2s, color 0.2s;
+}
+
+.formulario button[type="submit"]:hover {
+    background-color: #032072;
+    color: #fff;
+}
+
+.msg.error {
+    background: #fdecea;
+    color: #c0392b;
+    border-left: 4px solid #c0392b;
+    border-radius: 4px;
+    margin-top: 10px;
+    padding: 10px;
 }
