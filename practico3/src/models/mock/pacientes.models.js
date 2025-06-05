@@ -17,12 +17,11 @@ class PacientesModel {
     this.id = 2;
   }
 
-  findByEmail(email, password) {
+  findByEmail(email) {
     return new Promise((resolve, reject) => {
       try {
         const paciente = this.data.find(
-          (p) => p.email === email && p.password === password
-        );
+          (p) => p.email === email);
         if (!paciente) {
           throw new Error("el paciente no existe");
         }
@@ -35,10 +34,10 @@ class PacientesModel {
   validate(email, password) {
     return new Promise(async (resolve, reject) => {
       try {
-        const userFound = await this.findByEmail(email, password);
+        const userFound = this.data.find(p => p.email === email && p.password === password);
 
         if (!userFound || userFound.password == null) {
-          throw new Error("wrong email or password");
+          throw new Error("el email o la contraseña son incorrectos");
         }
 
         //payload, secreto, tiempo de expiracion
@@ -60,8 +59,6 @@ class PacientesModel {
 
   // crea un dato nuevo (alta de cliente)
   create(paciente) {
-    //TODO: verificar que no sea nulo si es nulo tierar excepcion
-    //return persona;
     return new Promise((resolve, reject) => {
       try{
         if (!paciente) {
@@ -69,32 +66,40 @@ class PacientesModel {
         }
         const pacienteEncontrado = this.data.find(p=>p.email===paciente.email)
         if(!pacienteEncontrado){
+          // Buscar el menor ID libre
+          let newId = 1;
+          const ids = this.data.map(p => p.id).sort((a, b) => a - b);
+          for (let i = 0; i < ids.length; i++) {
+            if (ids[i] !== i + 1) {
+              newId = i + 1;
+              break;
+            }
+            newId = ids.length + 1;
+          }
+          paciente.id = newId;
           this.data.push(paciente);
         }else{
           throw new Error("el paciente ya existe")
         }
-
-        paciente.id = this.id;
-        this.id++;
-        
         resolve(paciente);
       }catch(error){
         reject(error);
       }
     });
-  }
+}
   // actualiza los datos del cliente con id = id
   update(id, paciente) {
     return new Promise((resolve,reject)=>{
       try {
         const pacienteEncontrado = this.data.find((p) => p.id == id);
-      if (pacienteEncontrado===null) {
+      if (!pacienteEncontrado) {
         throw new Error("No se encuntra el paciente");
       }
       pacienteEncontrado.dni = paciente.dni;
       pacienteEncontrado.email = paciente.email;
       pacienteEncontrado.nombre = paciente.nombre;
       pacienteEncontrado.apellido = paciente.apellido;
+      pacienteEncontrado.password = paciente.password;
       resolve(pacienteEncontrado);
     } catch (error) {
       reject(error);

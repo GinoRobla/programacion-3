@@ -28,8 +28,17 @@ class TurnosModel {
   create(turno) {
     return new Promise((resolve, reject) => {
       try {
-        turno.id = this.id;
-        this.id++;
+        // Buscar el menor ID libre
+        let newId = 1;
+        const ids = this.data.map(t => t.id).sort((a, b) => a - b);
+        for (let i = 0; i < ids.length; i++) {
+          if (ids[i] !== i + 1) {
+            newId = i + 1;
+            break;
+          }
+          newId = ids.length + 1;
+        }
+        turno.id = newId;
         turno.pacienteId = Number(turno.pacienteId);
         this.data.push(turno);
         resolve(turno);
@@ -37,7 +46,7 @@ class TurnosModel {
         reject(error);
       }
     });
-  }
+}
 
   update(id, turno) {
     return new Promise((resolve, reject) => {
@@ -46,9 +55,11 @@ class TurnosModel {
         if (!turnoEncontrado) {
           throw new Error("El turno no existe");
         }
-        const pos = this.data.indexOf(turnoEncontrado);
-        this.data[pos] = { ...turnoEncontrado, ...turno, id: turnoEncontrado.id };
-        resolve(this.data[pos]);
+        // Actualizar solo los campos enviados, conservando los originales si no se envían
+        turnoEncontrado.fecha = turno.fecha || turnoEncontrado.fecha;
+        turnoEncontrado.hora = turno.hora || turnoEncontrado.hora;
+        turnoEncontrado.pacienteId = turno.pacienteId ? Number(turno.pacienteId) : turnoEncontrado.pacienteId;
+        resolve(turnoEncontrado);
       } catch (error) {
         reject(error);
       }

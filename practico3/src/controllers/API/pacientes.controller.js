@@ -27,10 +27,10 @@ class PacientesController {
     const info = await pacientesModel.create(nuevoPaciente);
     res.status(200).json(info);
   }
-  delete(req, res) {
+  async delete(req, res) {
     const id = req.params.id;
 
-    const pacienteBorrado = pacientesModel.delete(id)   ;
+    const pacienteBorrado = await pacientesModel.delete(id)   ;
     pacienteBorrado.then(paciente=>{
         res.status(200).json(paciente);
     }).catch(
@@ -40,11 +40,11 @@ class PacientesController {
     );
   
   }
-  update(req, res) {
+  async update(req, res) {
     const id = req.params.id;
     const { dni, nombre, apellido, email } = req.body;
     const nuevoPaciente = new Paciente(dni, nombre, apellido, email);
-    pacientesModel.update(id, nuevoPaciente);
+    await pacientesModel.update(id, nuevoPaciente);
     res.status(200).json({ message: "actualizado" });
   }
 

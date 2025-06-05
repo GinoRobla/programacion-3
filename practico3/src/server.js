@@ -8,7 +8,7 @@ const morgan = require('morgan');
 dotenv.config()
 
 class Server {
-  constructor (template=process.env.TEMPLATE || 'pug') {
+  constructor (template=process.env.TEMPLATE || 'ejs') {
     this.app = express()
     this.port = process.env.PORT || 3001
     this.middleware()
@@ -35,6 +35,7 @@ class Server {
   middleware () {
     this.app.use('/', express.static('public'))
     this.app.use(express.json())
+    this.app.use(express.urlencoded({ extended: true }))
     this.app.use(morgan('dev'))
   }
 

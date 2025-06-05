@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clinica - App</title>
+    <link rel="stylesheet" href="/app.css">
+</head>
+<!-- Solo el <body> y el contenido principal -->
+<body>
+    <header>
+        <h2>Clínica - Panel de Gestión</h2>
+        <form action="/logout" method="POST">
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    </header>
+    <main>
+        <div class="grid">
+            <!-- Pacientes -->
+            <section class="card">
+                <h3>Pacientes</h3>
+                <ul>
+                    <% if (pacientes && pacientes.length) { %>
+                        <% pacientes.forEach(function(p) { %>
+                            <li>
+                                <span>
+                                    <strong><%= p.nombre %> <%= p.apellido %></strong> (ID: <%= p.id %>, <%= p.email %>)
+                                </span>
+                                <form action="/eliminar-paciente" method="POST">
+                                    <input type="hidden" name="id" value="<%= p.id %>">
+                                    <button type="submit" class="danger" title="Eliminar" onclick="return confirm('¿Seguro?')">🗑️</button>
+                                </form>
+                            </li>
+                        <% }) %>
+                    <% } else { %>
+                        <li>No hay pacientes</li>
+                    <% } %>
+                </ul>
+                <h4>Nuevo paciente</h4>
+                <form action="/crear-paciente" method="POST" class="vertical">
+                    <input type="text" name="dni" placeholder="DNI">
+                    <input type="text" name="nombre" placeholder="Nombre">
+                    <input type="text" name="apellido" placeholder="Apellido">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <button type="submit">Crear</button>
+                </form>
+                <% if (pacienteMsg) { %>
+                    <p class="msg"><%= pacienteMsg %></p>
+                <% } %>
+            </section>
+
+            <!-- Turnos -->
+            <section class="card">
+                <h3>Turnos</h3>
+                <form action="/listar-turnos" method="POST" class="horizontal">
+                    <input type="number" name="idPaciente" placeholder="ID Paciente">
+                    <button type="submit">Ver turnos</button>
+                </form>
+                <ul>
+                    <% if (turnos && turnos.length) { %>
+                        <% turnos.forEach(function(t) { %>
+                            <li>
+                                <span>
+                                    <strong>Fecha:</strong> <%= t.fecha %> <strong>Hora:</strong> <%= t.hora %> (ID: <%= t.id %>)
+                                </span>
+                            </li>
+                        <% }) %>
+                    <% } else if (pacienteSeleccionado) { %>
+                        <li>No hay turnos para este paciente</li>
+                    <% } %>
+                </ul>
+                <h4>Nuevo turno</h4>
+                <form action="/crear-turno" method="POST" class="vertical">
+                    <input type="date" name="fecha">
+                    <input type="text" name="hora" placeholder="Hora (ej: 10:00)">
+                    <input type="number" name="pacienteId" placeholder="ID Paciente">
+                    <button type="submit">Crear turno</button>
+                </form>
+                <% if (turnoMsg) { %>
+                    <p class="msg"><%= turnoMsg %></p>
+                <% } %>
+            </section>
+        </div>
+
+        <div class="grid">
+            <!-- Buscar y actualizar paciente -->
+            <section class="card">
+                <h3>Buscar/Actualizar Paciente</h3>
+                <form action="/buscar-paciente-id" method="POST" class="horizontal">
+                    <input type="number" name="id" placeholder="ID Paciente">
+                    <button type="submit">Buscar por ID</button>
+                </form>
+                <% if (pacienteBuscado) { %>
+                    <div class="msg-buscado">
+                        <strong>ID:</strong> <%= pacienteBuscado.id %><br>
+                        <strong>DNI:</strong> <%= pacienteBuscado.dni %><br>
+                        <strong>Nombre:</strong> <%= pacienteBuscado.nombre %><br>
+                        <strong>Apellido:</strong> <%= pacienteBuscado.apellido %><br>
+                        <strong>Email:</strong> <%= pacienteBuscado.email %>
+                    </div>
+                <% } %>
+                <form action="/buscar-paciente-email" method="POST" class="horizontal">
+                    <input type="email" name="email" placeholder="Email">
+                    <button type="submit">Buscar por Email</button>
+                </form>
+                <% if (pacienteBuscadoEmail) { %>
+                    <div class="msg-buscado">
+                        <strong>ID:</strong> <%= pacienteBuscadoEmail.id %><br>
+                        <strong>DNI:</strong> <%= pacienteBuscadoEmail.dni %><br>
+                        <strong>Nombre:</strong> <%= pacienteBuscadoEmail.nombre %><br>
+                        <strong>Apellido:</strong> <%= pacienteBuscadoEmail.apellido %><br>
+                        <strong>Email:</strong> <%= pacienteBuscadoEmail.email %>
+                    </div>
+                <% } %>
+                <% if (buscarPacienteEmailMsg) { %>
+                    <p class="msg error"><%= buscarPacienteEmailMsg %></p>
+                <% } %>
+                <form action="/actualizar-paciente" method="POST" class="vertical">
+                    <input type="number" name="id" placeholder="ID Paciente">
+                    <input type="text" name="nombre" placeholder="Nuevo Nombre">
+                    <input type="text" name="apellido" placeholder="Nuevo Apellido">
+                    <input type="email" name="email" placeholder="Nuevo Email">
+                    <input type="password" name="password" placeholder="Nueva Contraseña">
+                    <input type="text" name="dni" placeholder="Nuevo DNI">
+                    <button type="submit">Actualizar</button>
+                </form>
+                <% if (actualizarPacienteMsg) { %>
+                    <p class="msg"><%= actualizarPacienteMsg %></p>
+                <% } %>
+            </section>
+
+            <!-- Eliminar y actualizar turno -->
+            <section class="card">
+                <h3>Eliminar/Actualizar Turno</h3>
+                <form action="/eliminar-turno" method="POST" class="horizontal">
+                    <input type="number" name="idTurno" placeholder="ID Turno">
+                    <button type="submit" class="danger" onclick="return confirm('¿Seguro?')">Eliminar turno</button>
+                </form>
+                <% if (eliminarTurnoMsg) { %>
+                    <p class="msg"><%= eliminarTurnoMsg %></p>
+                <% } %>
+                <form action="/actualizar-turno" method="POST" class="vertical">
+                    <input type="number" name="idTurno" placeholder="ID Turno">
+                    <input type="date" name="fecha" placeholder="Nueva Fecha">
+                    <input type="text" name="hora" placeholder="Nueva Hora">
+                    <input type="number" name="pacienteId" placeholder="ID Paciente">
+                    <button type="submit">Actualizar turno</button>
+                </form>
+                <% if (actualizarTurnoMsg) { %>
+                    <p class="msg"><%= actualizarTurnoMsg %></p>
+                <% } %>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
