@@ -3,7 +3,7 @@
 ## 🚀 Instalación
 
 ```bash
-git clone https://github.com/tuusuario/tu-repo.git
+git clone https://github.com/GinoRobla/programacion-3.git
 cd tu-repo
 npm install
 npm start
