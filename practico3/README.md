@@ -4,7 +4,7 @@
 
 ```bash
 git clone https://github.com/GinoRobla/programacion-3.git
-cd tu-repo
+cd programacion-3
 npm install
 npm start
 ```
