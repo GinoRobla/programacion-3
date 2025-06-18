@@ -6,16 +6,21 @@ const TraerPersonas = () => {
     const [personas, setPersonas] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/personas")
-        .then(res => setPersonas(res.data))
-        .catch(err => console.error("Error al traer personas:", err));
+        const fetchPersonas = async () => {
+            try {
+                const res = await axios.get("http://localhost:3000/api/personas");
+                setPersonas(res.data);
+            } catch (err) {
+                console.error("Error al traer personas:", err);
+            }
+        };
+        fetchPersonas();
     }, []);
 
     return (
-    <div>
-        <h2 style={{ textAlign: "center" }}>Lista de Personas</h2>
-        <ListaTarjetas personas={personas} />
-    </div>
+        <div>
+            <ListaTarjetas personas={personas} />
+        </div>
     );
 };
 
