@@ -20,5 +20,3 @@
 - Giuliano Tedeschi Gómez
 - Francisco Etchegaray
 - Jeremías Atala
-
----
