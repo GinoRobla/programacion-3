@@ -1,0 +1,99 @@
+/* Fondo general */
+body {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor del login/register */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem 2rem;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(27, 127, 58, 0.08);
+    border: 1.5px solid #e0f5e9;
+}
+
+/* Título */
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1b7f3a;
+    font-weight: 700;
+}
+
+/* Inputs */
+.auth-container form div {
+    margin-bottom: 1.2rem;
+}
+
+.auth-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #1b7f3a;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    border: 1.5px solid #b6e2c6;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+.auth-container input:focus {
+    border-color: #1b7f3a;
+    outline: none;
+}
+
+/* Botón */
+.auth-container button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #1b7f3a;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.auth-container button:hover {
+    background-color: #0e4d1d;
+}
+
+/* Enlace y mensaje inferior */
+.auth-container p {
+    text-align: center;
+    margin-top: 1.2rem;
+}
+
+.auth-container a {
+    color: #1b7f3a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+.mensajeError {
+    color: red;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
