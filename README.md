@@ -1,9 +1,5 @@
 # Programación III – Desarrollo Web
 
-📘 Repositorio académico con trabajos prácticos desarrollados durante la cursada de Programación III. Incluye desarrollo web con HTML, CSS y JavaScript, consumo de APIs y desarrollo con React + Express.
-
----
-
 ## 🧠 Contenidos principales
 
 - **Práctico 1:** Maquetado web con HTML y CSS.
